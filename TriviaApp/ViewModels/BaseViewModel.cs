@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TriviaApp.ViewModel
+namespace TriviaApp.ViewModels
 {
     public partial class BaseViewModel : ObservableObject
     {
