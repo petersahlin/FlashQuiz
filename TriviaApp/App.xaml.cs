@@ -1,4 +1,6 @@
-﻿namespace TriviaApp
+﻿using TriviaApp.Pages;
+
+namespace TriviaApp
 {
     public partial class App : Application
     {
@@ -7,6 +9,8 @@
             InitializeComponent();
 
             MainPage = new AppShell();
+
+           
         }
     }
 }
