@@ -9,6 +9,10 @@ namespace TriviaApp
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(TriviaPage), typeof(TriviaPage));
+            Routing.RegisterRoute(nameof(EndPage), typeof(EndPage));
+            Routing.RegisterRoute(nameof(PlayPage), typeof(PlayPage));
+
+
         }
     }
 }
