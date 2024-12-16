@@ -59,11 +59,7 @@ namespace TriviaApp.ViewModels
                         .Select(answer => WebUtility.HtmlDecode(answer))
                         .ToList();
                 }
-                //decode strings - html to normal text
-                //1 metod påbörjar decoding - hämta lista av strings för varje 
-                //2 metod som konv 1 string
-
-
+      
                 QuestionsList = new ObservableCollection<TriviaQuestion>(fetchedQuestions);
 
                 CurrentQuestionIndex = 0;
