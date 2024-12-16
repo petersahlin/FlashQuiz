@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaApp.Pages.EndPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+        <Label Text="Quiz over! Thanks for playing!" 
+               FontSize="Large" 
+               TextColor="{DynamicResource AppWhite}" 
+               HorizontalTextAlignment="Center"/>
+        <Label Text="Do you want to play again?" 
+               FontSize="Medium" 
+               TextColor="{DynamicResource AppWhite}" 
+               HorizontalTextAlignment="Center"/>
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Yes" 
+                    Command="{Binding PlayAgainCommand}" 
+                    Style="{DynamicResource QuestionButtonStyle}"/>
+            <Button Text="No" 
+                    Command="{Binding ExitCommand}" 
+                    Style="{DynamicResource QuestionButtonStyle}"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

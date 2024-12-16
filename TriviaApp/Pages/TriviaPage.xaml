@@ -9,9 +9,9 @@
         <Frame HeightRequest="250" Margin="10" >
             <Label  Text="{Binding CurrentQuestion.Question, TargetNullValue='No question available'}" Padding="10"  FontSize="Medium"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
         </Frame>
-        <!--<Label Text="{Binding DisplayQuestionIndex, StringFormat='Question {0} / 10'}" Margin="15,0,15,40" />-->
+        <Label Text="{Binding DisplayQuestionIndex, StringFormat='Question {0} / 10'}" TextColor="{DynamicResource AppWhite}" Margin="15,0,15,40" />
 
-        <Label Text="{Binding FeedbackMessage}" TextColor="{DynamicResource AppWhite}" Padding="10"  FontSize="Medium"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Text="{Binding FeedbackMessage}" TextColor="{DynamicResource AppWhite}" HeightRequest="100" Padding="10"  FontSize="Medium"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <CollectionView 
             ItemsSource="{Binding AnswersList}" 
             SelectionMode="None"
