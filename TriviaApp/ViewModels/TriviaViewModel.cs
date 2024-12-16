@@ -27,6 +27,14 @@ namespace TriviaApp.ViewModels
         [ObservableProperty]
         private bool _isQuizOver;
 
+        //public int DisplayQuestionIndex => CurrentQuestionIndex + 1;
+
+        // Partial method triggered when CurrentQuestionIndex changes
+        //partial void OnCurrentQuestionIndexChanged(int oldValue, int newValue)
+        //{
+        //    // Notify that DisplayQuestionIndex has changed
+        //    OnPropertyChanged(nameof(DisplayQuestionIndex));
+        //}
 
 
 
@@ -127,11 +135,12 @@ namespace TriviaApp.ViewModels
             }
             else
             {
-                FeedbackMessage = "Wrong :(";
+                FeedbackMessage = $"Wrong :( \nThe correct answer was: {CurrentQuestion.CorrectAnswer}";
             }
 
-            Task.Delay(2000).ContinueWith(_ =>
+            Task.Delay(3000).ContinueWith(_ =>
             {
+                FeedbackMessage = null;
                 CurrentQuestionIndex++;
                 LoadCurrentQuestion();
             });
