@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TriviaApp.ViewModels"
              x:Class="TriviaApp.Pages.PlayPage"
-             Title="Play Trivia">
-    <ContentPage.BindingContext>
+             Title="Trivia"
+             BackgroundColor="{DynamicResource AppBackgroundColor}"
+             >
+    <!--<ContentPage.BindingContext>
         <vm:PlayPageViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <Shell.TitleView>
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-            <Label Text="Play Trivia!" 
+            <Label Text="Trivia" 
                    FontSize="24" 
                    FontAttributes="Bold"
                    HorizontalOptions="CenterAndExpand" />
@@ -20,13 +22,9 @@
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <Button FontSize="22" 
                 Padding="25" 
+                BackgroundColor="{DynamicResource AppSilver}"
                 Text="PLAY TRIVIA" 
-                Command="{Binding PlayTriviaCommand}">
-            <Button.GestureRecognizers>
-            <PointerGestureRecognizer
-                    PointerEntered="OnPointerEntered"
-                    PointerExited="OnPointerExited" />
-            </Button.GestureRecognizers>
-            </Button>
+                Command="{Binding PlayTriviaCommand}"/>
+
     </VerticalStackLayout>
 </ContentPage>

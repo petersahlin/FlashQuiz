@@ -9,6 +9,27 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--Colors-->
+            <Color x:Key="AppBackgroundColor">#3D0C11</Color>
+            <Color x:Key="AppGold">#D39D55</Color>
+            <Color x:Key="AppSilver">#D6CFB4</Color>
+            <Color x:Key="AppWhite">#FFF8E6</Color>
+            <Color x:Key="CorrectAnswerColor">#4CAF50</Color>
+            <Color x:Key="WrongAnswerColor">#F44336</Color>
+
+            <Style x:Key="QuestionButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource AppSilver}" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="15" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
