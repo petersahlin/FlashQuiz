@@ -21,10 +21,11 @@
             <Style x:Key="QuestionButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{DynamicResource AppSilver}" />
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="Padding" Value="15" />
+                <Setter Property="MinimumWidthRequest" Value="165"/>
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 

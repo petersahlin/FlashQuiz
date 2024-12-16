@@ -5,26 +5,26 @@
              x:Class="TriviaApp.Pages.TriviaPage"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
 
-    <VerticalStackLayout>
-        <Frame HeightRequest="250">
-            <Label FontSize="Medium" Text="{Binding CurrentQuestion.Question, TargetNullValue='No question available'}" />
+    <VerticalStackLayout HorizontalOptions="Center">
+        <Frame HeightRequest="250" Margin="10" >
+            <Label  Text="{Binding CurrentQuestion.Question, TargetNullValue='No question available'}" Padding="10"  FontSize="Medium"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
         </Frame>
 
         <Label Text="{Binding AnswersList.Count}" />
         <CollectionView 
-            
             ItemsSource="{Binding AnswersList}" 
             SelectionMode="None"
-            ItemSizingStrategy="MeasureAllItems">
-
+            Margin="10"
+            HorizontalOptions="Center">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+                    
                     <Button Text="{Binding .}" 
                             Style="{DynamicResource QuestionButtonStyle}" 
-                            Command="{Binding Source={RelativeSource 
-                        AncestorType={x:Type 
-                        viewModel:TriviaViewModel}}, 
-                        Path=SubmitAnswerCommand}" 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:TriviaViewModel}}, Path=SubmitAnswerCommand}" 
                             CommandParameter="{Binding .}" />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
