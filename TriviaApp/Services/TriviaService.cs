@@ -1,4 +1,6 @@
-﻿using System.Net.Http.Json;
+﻿using System.Diagnostics;
+using System.Net.Http.Json;
+using System.Text.Json;
 using TriviaApp.Models;
 
 namespace TriviaApp.Services
@@ -22,24 +24,34 @@ namespace TriviaApp.Services
 
         public async Task<List<TriviaQuestion>> GetTriviaQuestions()
         {
-            if (_questionList?.Count > 0) 
-            { 
+            if (_questionList?.Count > 0)
+            {
                 return _questionList;
             }
-            
-            var url = "https://opentdb.com/api.php?amount=10";
 
-            var response = await _httpClient.GetAsync(url);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var questionsList = await response.Content.ReadFromJsonAsync<List<TriviaQuestion>>();
+                var url = "https://opentdb.com/api.php?amount=10&type=multiple";
+
+                var response = await _httpClient.GetFromJsonAsync<TriviaResponse>(url);
+
+                if (response?.Results == null || response.Results.Count == 0)
+                {
+                    throw new Exception("No trivia questions found.");
+                }
+
+                _questionList = response.Results;
+                return _questionList;
 
 
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex);
             }
 
             return _questionList;
-
 
 
         }

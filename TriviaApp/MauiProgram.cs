@@ -20,13 +20,15 @@ namespace TriviaApp
 
 
             builder.Services.AddSingleton<PlayPage>();
+            builder.Services.AddSingleton<PlayPageViewModel>();
             builder.Services.AddTransient<TriviaPage>();
             builder.Services.AddTransient<TriviaViewModel>();
             builder.Services.AddTransient<ITriviaService, TriviaService>();
             builder.Services.AddTransient<IAlertService, AlertService>();
 
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

@@ -6,11 +6,15 @@
     xmlns:local="clr-namespace:TriviaApp"
     xmlns:pages="clr-namespace:TriviaApp.Pages"
     Shell.FlyoutBehavior="Disabled"
-    Title="TriviaApp">
+    Title="TriviaApp"
+    Shell.BackgroundColor="{StaticResource AppGold}"
+    Shell.ForegroundColor="{StaticResource AppWhite}"
+    >
 
     <ShellContent
         Title="Play"
         ContentTemplate="{DataTemplate pages:PlayPage}"
-        Route="MainPage" />
- 
+        Route="PlayPage" />
+  
+
 </Shell>

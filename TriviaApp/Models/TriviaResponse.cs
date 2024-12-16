@@ -9,6 +9,6 @@ namespace TriviaApp.Models
     public class TriviaResponse
     {
         public int ResponseCode { get; set; }
-        public List<TriviaQuestion> Questions { get; set; }
+        public List<TriviaQuestion> Results { get; set; }
     }
 }
