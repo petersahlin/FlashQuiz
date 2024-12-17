@@ -16,6 +16,9 @@ namespace TriviaApp
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("GreatVibes-Regular.ttf", "GreatVibes-Regular");
+                    fonts.AddFont("Caramel-Regular.ttf", "Caramel-Regular");
+
                 });
 
 
