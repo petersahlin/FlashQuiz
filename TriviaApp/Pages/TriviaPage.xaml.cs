@@ -8,7 +8,7 @@ public partial class TriviaPage : ContentPage
 {
     public TriviaPage(TriviaViewModel viewModel)
     {
-        Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!TRIVIAPAGE INITIALIZED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
         InitializeComponent();
 
         BindingContext = viewModel;
@@ -41,7 +41,6 @@ public partial class TriviaPage : ContentPage
         }
         catch (Exception ex)
         {
-
             Debug.WriteLine($"Error in OnAppearing: {ex.Message}");
         }
     }

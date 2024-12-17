@@ -7,7 +7,7 @@ public partial class PlayPage : ContentPage
 {
 	public PlayPage(PlayPageViewModel viewModel)
 	{
-		Debug.WriteLine("!!!!!!!!!PLAYPAGE CONSTRUCTOR THINGY ENTERED");
+	
 
 		InitializeComponent();
 

@@ -10,7 +10,6 @@ namespace TriviaApp.Services
         public Task<List<TriviaQuestion>> GetTriviaQuestions();
     }
 
-
     public class TriviaService : ITriviaService
     {
         HttpClient _httpClient;
@@ -43,11 +42,9 @@ namespace TriviaApp.Services
                 _questionList = response.Results;
                 return _questionList;
 
-
             }
             catch (Exception ex)
             {
-
                 Debug.WriteLine(ex);
             }
 
