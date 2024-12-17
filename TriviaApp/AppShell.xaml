@@ -7,7 +7,7 @@
     xmlns:pages="clr-namespace:TriviaApp.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="TriviaApp"
-     Shell.BackgroundColor="{StaticResource AppGold}"
+    Shell.BackgroundColor="{StaticResource AppGold}"
     Shell.ForegroundColor="{StaticResource AppWhite}"
     >
 
