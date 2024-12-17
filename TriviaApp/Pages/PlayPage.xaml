@@ -6,9 +6,6 @@
              Title="Trivia"
              BackgroundColor="{DynamicResource AppBackgroundColor}"
              >
-    <!--<ContentPage.BindingContext>
-        <vm:PlayPageViewModel />
-    </ContentPage.BindingContext>-->
 
     <Shell.TitleView>
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
@@ -23,6 +20,7 @@
         <Button FontSize="22" 
                 Padding="25" 
                 BackgroundColor="{DynamicResource AppSilver}"
+                TextColor="{DynamicResource Black}"
                 Text="PLAY TRIVIA" 
                 Command="{Binding PlayTriviaCommand}"/>
 

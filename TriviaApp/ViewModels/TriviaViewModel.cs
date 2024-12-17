@@ -27,16 +27,7 @@ namespace TriviaApp.ViewModels
 
         [ObservableProperty]
         private bool _isQuizOver;
-
         public int DisplayQuestionIndex => CurrentQuestionIndex + 1;
-
-        //Partial method triggered when CurrentQuestionIndex changes
-        partial void OnCurrentQuestionIndexChanged(int oldValue, int newValue)
-        {
-            // Notify that DisplayQuestionIndex has changed
-            OnPropertyChanged(nameof(DisplayQuestionIndex));
-        }
-
 
 
         public ObservableCollection<TriviaQuestion> QuestionsList { get; set; }
@@ -44,14 +35,17 @@ namespace TriviaApp.ViewModels
 
         public TriviaViewModel(ITriviaService triviaService, IAlertService alertService)
         {
-            Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!TRIVIAVIEWMODEL INITIALIZED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             _triviaService = triviaService;
             _alertService = alertService;
             QuestionsList = new ObservableCollection<TriviaQuestion>();
-
         }
 
-
+        //Partial method triggered when CurrentQuestionIndex changes
+        partial void OnCurrentQuestionIndexChanged(int oldValue, int newValue)
+        {
+            // Notify that DisplayQuestionIndex has changed
+            OnPropertyChanged(nameof(DisplayQuestionIndex));
+        }
 
         [RelayCommand]
         public async Task GetTriviaQuestions()
@@ -76,38 +70,20 @@ namespace TriviaApp.ViewModels
             }
             catch (Exception ex)
             {
-
                 Debug.WriteLine(ex);
                 await _alertService.ShowAlertAsync("Error", "An error occured while fetching questions. Please try again.", "OK");
-
             }
         }
 
         private void LoadCurrentQuestion()
         {
-            if (CurrentQuestionIndex >= QuestionsList.Count)
-            {
-                IsQuizOver = true;
-                //FeedbackMessage = "Quiz over! Thanks for playing!";
-                return;
-            }
-
             CurrentQuestion = QuestionsList[CurrentQuestionIndex];
-            Debug.WriteLine($"Current Question: {CurrentQuestion.Question}");
 
             //randomize answers
             var allAnswers = new List<string>(CurrentQuestion.IncorrectAnswers) { CurrentQuestion.CorrectAnswer };
-            //decode html stuff
 
             allAnswers = allAnswers.OrderBy(_ => Guid.NewGuid()).ToList();
 
-            Debug.WriteLine("Shuffled Answers:");
-            foreach (var answer in allAnswers)
-            {
-                Debug.WriteLine(answer);
-            }
-
-            Debug.WriteLine("Clearing AnswersList...");
             AnswersList.Clear();
 
 
@@ -115,16 +91,6 @@ namespace TriviaApp.ViewModels
             {
                 AnswersList.Add(answer);
             }
-
-            //debugging answerlist
-            // Debug final state of AnswersList
-            Debug.WriteLine("Final AnswersList:");
-            foreach (var answer in AnswersList)
-            {
-                Debug.WriteLine(answer);
-            }
-
-
         }
 
         [RelayCommand]
@@ -144,7 +110,6 @@ namespace TriviaApp.ViewModels
                 FeedbackMessage = null;
                 try
                 {
-
                     if (CurrentQuestionIndex >= QuestionsList.Count - 1)
                     {
                         IsQuizOver = true;
@@ -156,13 +121,12 @@ namespace TriviaApp.ViewModels
                                 { "viewModel", this }
                             });
                         });
-                     
+
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
-
                     Debug.WriteLine(ex);
                 }
 

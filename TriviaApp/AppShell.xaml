@@ -15,6 +15,12 @@
         Title="Play"
         ContentTemplate="{DataTemplate pages:PlayPage}"
         Route="PlayPage" />
-  
+
+    <Shell.Resources>
+        <Style TargetType="Shell">
+            <Setter Property="BackgroundColor" Value="{StaticResource AppGold}" />
+            <Setter Property="TitleColor" Value="{StaticResource AppWhite}" />
+        </Style>
+    </Shell.Resources>
 
 </Shell>
