@@ -7,14 +7,6 @@
              BackgroundColor="{DynamicResource AppBackgroundColor}"
              >
 
-    <Shell.TitleView>
-        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-            <Label Text="Trivia" 
-                   FontSize="24" 
-                   FontAttributes="Bold"
-                   HorizontalOptions="CenterAndExpand" />
-        </HorizontalStackLayout>
-    </Shell.TitleView>
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <Button FontSize="22" 

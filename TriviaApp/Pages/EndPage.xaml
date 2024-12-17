@@ -3,15 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaApp.Pages.EndPage"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
+
+
+    <Shell.TitleView>
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="End of Quiz" 
+                FontSize="24" 
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="Center"
+                TextColor="{StaticResource AppWhite}"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
         <Label Text="Quiz over! Thanks for playing!" 
                FontSize="Large" 
                TextColor="{DynamicResource AppWhite}" 
                HorizontalTextAlignment="Center"/>
-        <Label Text="Do you want to play again?" 
-               FontSize="Medium" 
-               TextColor="{DynamicResource AppWhite}" 
-               HorizontalTextAlignment="Center"/>
+
+        <Label Text="{Binding YourScore, StringFormat='Your score: {0} / 10'}"
+         FontSize="Medium" 
+         TextColor="{DynamicResource AppWhite}" 
+         HorizontalTextAlignment="Center"/>
+
+        <Label Margin="10" Text="Do you want to play again?" 
+        FontSize="Medium" 
+        TextColor="{DynamicResource AppWhite}" 
+        HorizontalTextAlignment="Center"/>
+      
         <HorizontalStackLayout Spacing="10">
             <Button Text="Yes" 
                     Command="{Binding PlayAgainCommand}" 

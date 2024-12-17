@@ -27,6 +27,7 @@
                 <Setter Property="Padding" Value="15" />
                 <Setter Property="MinimumWidthRequest" Value="165"/>
                 <Setter Property="MaximumWidthRequest" Value="170"/>
+                <Setter Property="LineBreakMode" Value="WordWrap" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 

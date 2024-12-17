@@ -28,6 +28,7 @@ namespace TriviaApp.ViewModels
         [ObservableProperty]
         private bool _isQuizOver;
         public int DisplayQuestionIndex => CurrentQuestionIndex + 1;
+        public int YourScore { get; set; } =0;
 
 
         public ObservableCollection<TriviaQuestion> QuestionsList { get; set; }
@@ -50,6 +51,7 @@ namespace TriviaApp.ViewModels
         [RelayCommand]
         public async Task GetTriviaQuestions()
         {
+            YourScore = 0;
             try
             {
                 var fetchedQuestions = await _triviaService.GetTriviaQuestions();
@@ -99,6 +101,7 @@ namespace TriviaApp.ViewModels
             if (selectedAnswer == CurrentQuestion.CorrectAnswer)
             {
                 FeedbackMessage = "Correct!";
+                YourScore++;
             }
             else
             {
@@ -141,6 +144,7 @@ namespace TriviaApp.ViewModels
         {
             // Reset the quiz state and navigate back to the trivia page.
             CurrentQuestionIndex = 0;
+     
             LoadCurrentQuestion();
             await Shell.Current.GoToAsync($"{nameof(TriviaPage)}", true);
         }

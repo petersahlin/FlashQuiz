@@ -7,14 +7,29 @@
     xmlns:pages="clr-namespace:TriviaApp.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="TriviaApp"
-    Shell.BackgroundColor="{StaticResource AppGold}"
+     Shell.BackgroundColor="{StaticResource AppGold}"
     Shell.ForegroundColor="{StaticResource AppWhite}"
     >
+
+    <Shell.TitleView>
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="Flash Quiz" 
+                 FontSize="46" 
+                
+                 HorizontalOptions="CenterAndExpand" 
+                 VerticalOptions="Center"
+                 TextColor="{StaticResource AppWhite}"
+                 FontFamily="Caramel-Regular"
+                   />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
 
     <ShellContent
         Title="Play"
         ContentTemplate="{DataTemplate pages:PlayPage}"
-        Route="PlayPage" />
+        Route="PlayPage" 
+        />
+
 
     <Shell.Resources>
         <Style TargetType="Shell">
