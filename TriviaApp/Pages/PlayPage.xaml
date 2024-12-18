@@ -9,6 +9,16 @@
 
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Entry Placeholder="Enter number of questions"
+               Keyboard="Numeric"
+               Text="{Binding QuestionAmount, Mode=TwoWay}"
+               TextColor="{StaticResource AppWhite}"
+               WidthRequest="240"
+               HorizontalTextAlignment="Center"
+               FontSize="16" 
+               Margin="15"/>
+
+
         <Button FontSize="22" 
                 Padding="25" 
                 BackgroundColor="{DynamicResource AppSilver}"

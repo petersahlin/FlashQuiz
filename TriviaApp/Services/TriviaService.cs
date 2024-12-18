@@ -7,7 +7,7 @@ namespace TriviaApp.Services
 {
     public interface ITriviaService
     {
-        public Task<List<TriviaQuestion>> GetTriviaQuestions();
+        public Task<List<TriviaQuestion>> GetTriviaQuestions(int amount);
     }
 
     public class TriviaService : ITriviaService
@@ -21,7 +21,7 @@ namespace TriviaApp.Services
             _httpClient = new HttpClient();
         }
 
-        public async Task<List<TriviaQuestion>> GetTriviaQuestions()
+        public async Task<List<TriviaQuestion>> GetTriviaQuestions(int amount)
         {
             if (_questionList?.Count > 0)
             {
@@ -30,7 +30,7 @@ namespace TriviaApp.Services
 
             try
             {
-                var url = "https://opentdb.com/api.php?amount=10&type=multiple";
+                var url = $"https://opentdb.com/api.php?amount={amount}&type=multiple";
 
                 var response = await _httpClient.GetFromJsonAsync<TriviaResponse>(url);
 
