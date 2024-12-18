@@ -11,7 +11,7 @@ using TriviaApp.Services;
 
 namespace TriviaApp.ViewModels
 {
-    public partial class TriviaViewModel : BaseViewModel
+    public partial class TriviaViewModel : BaseViewModel, IQueryAttributable
     {
         private readonly ITriviaService _triviaService;
         private readonly IAlertService _alertService;
@@ -28,7 +28,8 @@ namespace TriviaApp.ViewModels
         [ObservableProperty]
         private bool _isQuizOver;
         public int DisplayQuestionIndex => CurrentQuestionIndex + 1;
-        public int YourScore { get; set; } =0;
+        public int YourScore { get; set; } = 0;
+        public int QuestionAmount { get; set; } = 10;
 
 
         public ObservableCollection<TriviaQuestion> QuestionsList { get; set; }
@@ -44,8 +45,23 @@ namespace TriviaApp.ViewModels
         //Partial method triggered when CurrentQuestionIndex changes
         partial void OnCurrentQuestionIndexChanged(int oldValue, int newValue)
         {
-            // Notify that DisplayQuestionIndex has changed
             OnPropertyChanged(nameof(DisplayQuestionIndex));
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.TryGetValue("questionAmount", out var amount))
+            {
+                if (int.TryParse(amount.ToString(), out int parsedAmount))
+                {
+                    QuestionAmount = parsedAmount;
+                }
+                else
+                {
+                    QuestionAmount = 10;
+                }
+            }
+            GetTriviaQuestionsCommand.Execute(null);
         }
 
         [RelayCommand]
@@ -54,8 +70,16 @@ namespace TriviaApp.ViewModels
             YourScore = 0;
             try
             {
-                var fetchedQuestions = await _triviaService.GetTriviaQuestions();
+                var fetchedQuestions = await _triviaService.GetTriviaQuestions(QuestionAmount);
 
+                if (fetchedQuestions == null || fetchedQuestions.Count == 0)
+                {
+                    Debug.WriteLine("No questions returned from the trivia service.");
+                    await _alertService.ShowAlertAsync("Error", "No questions available. Please try again.", "OK");
+                    return;
+                }
+
+                //html formatting
                 foreach (var question in fetchedQuestions)
                 {
                     question.Question = WebUtility.HtmlDecode(question.Question);
@@ -87,8 +111,6 @@ namespace TriviaApp.ViewModels
             allAnswers = allAnswers.OrderBy(_ => Guid.NewGuid()).ToList();
 
             AnswersList.Clear();
-
-
             foreach (var answer in allAnswers)
             {
                 AnswersList.Add(answer);
@@ -142,16 +164,16 @@ namespace TriviaApp.ViewModels
         [RelayCommand]
         private async Task PlayAgain()
         {
-            // Reset the quiz state and navigate back to the trivia page.
+            // Reset the quiz index and navigate back to the trivia page.
             CurrentQuestionIndex = 0;
-     
-            LoadCurrentQuestion();
-            await Shell.Current.GoToAsync($"{nameof(TriviaPage)}", true);
+         
+            await Shell.Current.GoToAsync($"{nameof(TriviaPage)}?questionAmount={QuestionAmount}", true);
         }
 
         [RelayCommand]
         private async Task Exit()
         {
+            QuestionAmount = 0;
             await Shell.Current.GoToAsync($"///PlayPage", true);
         }
 

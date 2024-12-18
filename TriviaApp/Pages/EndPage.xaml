@@ -22,7 +22,7 @@
                TextColor="{DynamicResource AppWhite}" 
                HorizontalTextAlignment="Center"/>
 
-        <Label Text="{Binding YourScore, StringFormat='Your score: {0} / 10'}"
+        <Label Text="{Binding YourScore, StringFormat='You answered {0} questions correctly.'}"
          FontSize="Medium" 
          TextColor="{DynamicResource AppWhite}" 
          HorizontalTextAlignment="Center"/>
